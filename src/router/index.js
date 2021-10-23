@@ -6,6 +6,10 @@ import Welcome from '@/components/Welcome'
 import Users from '@/components/user/Users'
 import Rights from '@/components/power/Rights'
 import Roles from '@/components/power/Roles'
+import Cate from '@/components/goods/Cate'
+import Goods from '@/components/goods/Goods'
+import Params from '@/components/goods/Params'
+import Add from '@/components/goods/Add'
 
 Vue.use(VueRouter)
 
@@ -38,6 +42,23 @@ const routes = [
       {
         path: '/roles',
         component: Roles
+      },
+      {
+        path: '/categories',
+        component: Cate
+      },
+      {
+        name: 'goods',
+        path: '/goods',
+        component: Goods
+      },
+      {
+        path: '/goods/add',
+        component: Add
+      },
+      {
+        path: '/params',
+        component: Params
       }
     ]
   }
@@ -60,7 +81,6 @@ router.beforeEach((to, from, next) => {
   // 获取token
   const tokenStr = window.sessionStorage.getItem('token')
   if (!tokenStr) {
-    console.log('@@@@@', to, from)
     alert('当前页面无权访问')
     return next('/login')
   }
