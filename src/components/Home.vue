@@ -3,10 +3,11 @@
       <!-- 头部区域 -->
       <el-header>
         <div>
-          <img src="../assets/heima.png" alt="">
+          <img src="../assets/manager.jpg" alt="">
           <span>电商后台管理系统</span>
         </div>
-        <el-button type="info" @click="logout">退出</el-button>
+        <p>欢迎{{username}}</p>
+        <el-button type="danger" @click="logout">退出</el-button>
       </el-header>
       <!-- 页面主体区域 -->
       <el-container>
@@ -65,6 +66,7 @@
         // 左侧菜单数据
         menuList: [],
         iconsObj: {
+          147: 'el-icon-magic-stick',
           125: 'iconfont icon-user',
           103: 'iconfont icon-tijikongjian',
           101: 'iconfont icon-shangpin',
@@ -74,7 +76,24 @@
         // 是否折叠
         isCollapse: false,
         // 被激活的链接地址
-        activePath: ''
+        activePath: '',
+        // 当前登录用户的用户名
+        username: window.localStorage.getItem('username'),
+        welcome: {
+          authName: '欢迎光临',
+          id: 147,
+          order: 1,
+          path: '/welcome',
+          children: [
+            {
+              authName: 'Welcome',
+              id: 124,
+              order: 1,
+              path: 'welcome',
+              children: []
+            }
+          ]
+        }
       }
     },
     created () {
@@ -93,6 +112,7 @@
         if (res.meta.status !== 200) {
           return this.$message.error(res.meta.msg)
         }
+        res.data.unshift(this.welcome)
         this.menuList = res.data
         // console.log(res)
       },
@@ -124,6 +144,12 @@
   > div{
     display: flex;
     align-items: center;
+    > img{
+      border-radius: 50%;
+      margin-left: 15px;
+      width: 61px;
+      height: 56px;
+    }
     > span{
       margin-left: 15px;
     }

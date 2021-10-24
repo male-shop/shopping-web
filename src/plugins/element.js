@@ -10,7 +10,8 @@ import {
   Dialog, MessageBox, Tag, Tree,
   Select, Option, Cascader,
   Alert, Tabs, TabPane,
-  Step, Steps, Checkbox, CheckboxGroup, Upload
+  Step, Steps, Checkbox, CheckboxGroup, Upload,
+  Timeline, TimelineItem
 } from 'element-ui'
 
 Vue.use(Button)
@@ -48,7 +49,7 @@ Vue.use(Steps)
 Vue.use(Checkbox)
 Vue.use(CheckboxGroup)
 Vue.use(Upload)
+Vue.use(Timeline)
+Vue.use(TimelineItem)
 Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm
-Vue.prototype.$alert = MessageBox.alert
-Vue.prototype.$prompt = MessageBox.prompt
